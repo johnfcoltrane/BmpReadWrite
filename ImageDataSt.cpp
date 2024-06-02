@@ -35,6 +35,28 @@ public:
 		}
 
 	}
+	void setTestData2(int width, int height)
+	{
+		int i = 0;
+		this->width = width;
+		this->height = height;
+		for(int row=0; row<height; row++){
+			vector<vector<px_type>> line;
+			for(int col=0; col<width; col++){
+				px_type r = i*10+ 1;
+				px_type g = i*10+ 2;
+				px_type b = i*10+ 3;
+				vector<px_type>itm;
+				itm.push_back(r);
+				itm.push_back(g);
+				itm.push_back(b);
+				line.push_back(itm);
+				i++;
+			}
+			data.push_back(line);
+		}
+
+	}
 	void output(const char* fname){
 		FILE *f;
 		f = fopen(fname, "wb"); // binary-mode
@@ -46,7 +68,7 @@ public:
 				//vector<char> itm;
 				px_type* p = &data[row][col][0];
 				//fwrite(&p, 3, 1, f);
-				fwrite(&p, 1, 3, f);
+				fwrite(p, 1, 3, f);
 			}
 		}
 		fclose(f);
@@ -86,9 +108,9 @@ public:
 				//cout << (int)data[row][col][2];
 				//cout << "]";
 				printf("[%03d,%03d,%03d]",
-				 (int)data[row][col][0],
-				 (int)data[row][col][1],
-				 (int)data[row][col][2] 
+				 (unsigned int)data[row][col][0],
+				 (unsigned int)data[row][col][1],
+				 (unsigned int)data[row][col][2] 
 					);
 			}
 			cout << endl;
@@ -103,7 +125,9 @@ union U {
 int main(){
 	const char* testFileName = "t:\\testImage.dat";
 	ImageDataSt a;
-	a.setTestData(3,2);
+	//a.setTestData(3,2);
+	a.setTestData2(4,3);
+
 	a.output(testFileName);
 	a.input(testFileName);
 	a.show();
