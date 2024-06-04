@@ -38,7 +38,7 @@ int GetSlope(vector<int> v){
 }
 // -------------------------------------------------------------
 
-int main(){
+void main2(){
 	int i = 123;
 	try{
 	assert(i+1==124);

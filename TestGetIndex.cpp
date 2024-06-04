@@ -4,6 +4,9 @@
 
 using namespace std;
 
+int GetSlope(vector<int> v);
+
+
 /*
 function getIndex($row, $col, $rgb, $realSize){
 
@@ -75,10 +78,13 @@ int getRealsize(int w)
 {
     return(w * 3 + w % 4);
 }
-int main(){
+int test1(
+		int width = 40,
+		int height = 20
+		  ){
 vector<int> v;
-int width = 40;
-int height = 20;
+//int width = 40;
+//int height = 20;
 	int realsize = getRealsize (width);
 	for(int row=0; row < height;row++){
 		for(int col=0; col < width;col++){
@@ -107,4 +113,12 @@ int height = 20;
 	}
 	cout << "OK" << endl;
 	VOUT(v.size());
+	return(GetSlope(v));
+}
+int main(){
+	VOUT(test1(3, 3));
+	VOUT(test1(4, 3));
+	VOUT(test1(5, 3));
+	VOUT(test1(6, 3));
+	VOUT(test1(1920, 1080));
 }
